@@ -48,6 +48,11 @@
       background-color: #36f4ab;
     }
 
+    #btnReset{
+      background-color: grey;
+    }
+
+
     button:hover {
       opacity: 0.8;
     }
@@ -63,11 +68,12 @@
     <button id="btn12">D12</button>
     <button id="btn20">D20</button>
     <button id="btn100">D100</button>
+    <button id="btnReset">Reset</button>
   </div>
 
   <hr>
 
-  <div>The roll is: <span id="numberSpan">???</span></div>
+  <div><span id="numberSpan"></span></div>
   <script>
     // We are putting the <script> tag at the bottom to make sure that 
     // the HTML page has loaded before we start trying to hook up button events
@@ -79,6 +85,7 @@
       max = Math.floor(max);
       let number = Math.floor(Math.random() * (max - min + 1)) + min;
       numberSpan.innerHTML = number;
+      numberSpan.innerHTML = `<p>You rolled a D ${max}  you got a: ${number}</p>${numberSpan.innerHTML}`;
     }
 
     btn4.onclick = function(){
@@ -86,7 +93,7 @@
     };
 
     btn6.onclick = function(){
-      showRandomInt(1, 6);
+      showRandomInt(1, 6)
     };
 
     btn8.onclick = function(){
@@ -108,6 +115,11 @@
      btn100.onclick = function(){
       showRandomInt(1, 100);
     };
+    
+    btnReset.onclick = function(){
+      numberSpan.innerHTML = "";
+    };
+
   </script>
 </body>
 </html>
